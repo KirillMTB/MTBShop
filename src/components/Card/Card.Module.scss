@@ -1,0 +1,51 @@
+.card{
+    border: 1px solid #F1F1F1;
+    padding: 20px;
+    width: 300px;
+    border-radius: 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    transition: box-shadow 300ms ease-in-out, transform 300ms ease-in-out;
+    
+    .plus{
+       
+        cursor: pointer;
+    }
+   
+    h5{
+        font-weight: 400px;
+        font-size: 14px;
+      }
+
+    &:hover{
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
+     
+      transform: translateY(-10px);
+  
+    }
+  
+    
+  
+    .favorite{
+      cursor: pointer;
+    }
+    span{
+      opacity: 0.5;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    b{
+      font-size: 14px;
+    }
+  }
+ /* 
+  .button_plus{
+    background: #fff;
+    border: 1px solid #F1F1F1;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+  }
+  */
