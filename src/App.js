@@ -1,106 +1,81 @@
 import React from "react";
+import axios from "axios";
 import Card from "./components/Card/";
 import Header from "./components/Header.jsx";
 import Drawer from "./components/Drawer.jsx";
 
-{/*const arr=[ {
-  name:'GT 27.5 FORCE CRB EXPERT',
-  price: 430584,
-  imageURL: './img/gtforcesmall.jpg',
-  alt: 'GT Force'
-},
-
-{
-  name:'GT 27.5 AVALANCHE COMP',
-  price: 53460,
-  imageURL: './img/gtavalanche.jpg',
-  alt: 'GT Avalanche COMP'
-},
-
-{
-  name:'CANNONDALE TRAIL SE 2',
-  price: 155246,
-  imageURL: './img/cannondaletrail.jpg',
-  alt: 'CANNONDALE TRAIL SE 2'
-},
-
-{
-  name:'CANNONDALE TRAIL SE 1',
-  price: 168620,
-  imageURL: './img/cannondaletrailse.jpg',
-  alt: 'CANNONDALE TRAIL SE 1'
-},
-
-{
-  name:'CANNONDALE F-SI CRB 4',
-  price: 323615,
-  imageURL: './img/cannondalefsi.jpg',
-  alt: 'CANNONDALE F-SI CRB 4'
-},
-
-{
-  name:'CANNONDALE SCALPEL CRB 3',
-  price: 447595,
-  imageURL: './img/cannondalescalpel.jpg',
-  alt: 'CANNONDALE SCALPEL CRB 3'
-},
-{
-  name:'Corratec VERT ELITE',
-  price: 113630,
-  imageURL: './img/corratecvertelite.jpg',
-  alt: 'Corratec VERT ELITE'
-},
-
-{
-  name:'Outleap RADIUS PRO 29',
-  price: 106700,
-  imageURL: './img/outleapradiuspro.jpg',
-  alt: 'Outleap RADIUS PRO 29'
-},
-{
-  name:'Jamis HARDLINE C2',
-  price: 640024,
-  imageURL: './img/jamishardlinec2.jpg',
-  alt: 'Jamis HARDLINE C2'
-},
-{
-  name:'Jamis HARDLINE C3',
-  price: 537660,
-  imageURL: './img/jamishardline.jpg',
-  alt: 'Jamis HARDLINE C3'
-},
-]*/}
+const itemsUrl = 'http://localhost:3001/items';
+const cartUrl = 'http://localhost:3001/cart';
 
 export default function App() {
   const [items,setItems] = React.useState([]);
   const [cartItems,setCartItems]=React.useState([]);
+  const [searchValue, setSearchValue] = React.useState('');
   const [cartOpened, setCartOpened]=React.useState(false);
 
  {/* fetch('https://659fa91c5023b02bfe8a1cbf.mockapi.io/items').then(res=>{return res.json();}).then(json=>{setItems(json);}); можно использовать только при первой загрузке, всегда будет подгружаться*/}
-  React.useEffect(()=>{fetch('https://659fa91c5023b02bfe8a1cbf.mockapi.io/items').then(res=>{return res.json();}).then(json=>{setItems(json);})}, []);
+  {/*React.useEffect(()=>{fetch('https://659fa91c5023b02bfe8a1cbf.mockapi.io/items').then(res=>{return res.json();}).then(json=>{setItems(json);}) то же самое, но так делали раньше, в основном сейчас использую эксиос*/}
+{/*axios.get('https://659fa91c5023b02bfe8a1cbf.mockapi.io/items').then(res=>{setItems(res.data);})
+axios.get('https://659fa91c5023b02bfe8a1cbf.mockapi.io/cart').then(res=>{setCartItems(res.data);})
+}, []);*/}
+React.useEffect(()=>{
+  axios.get(itemsUrl).then(res => {
+    setItems(res.data);
+  });
+  axios.get(cartUrl).then(res => {
+    setCartItems(res.data);
+  });
+},[]);
 
-  const onAddToCart=(obj)=>{
-    setCartItems((prev)=>[...prev, obj]);};
-    console.log(cartItems);
+const onAddToCart = (obj) => {
+  const itemInCart = cartItems.find(item => item.id === obj.id);
+  if (itemInCart) {
+    return;
+  }
+
+  axios.post(cartUrl, obj);
+  setCartItems((prev) => [...prev, obj]);
+};
+
+const onRemoveItem = (id) => {
+  axios.delete(`${cartUrl}/${id}`)
+  .then(() => {
+    setCartItems((prev) => prev.filter(item => item.id !== id));
+  })
+  .catch((error) => {
+    console.error('Error deleting item from cart:', error);
+  });
+};
+
+     
+      
+   
+
+    const onChangeSearchInput=(event)=>{  //метод, который будет каждый раз вызываться, когда в поиске будет чтото прописываться
+      setSearchValue(event.target.value);
+    }
 
   return (
     <div className="wrapper clear">
       
-       {cartOpened && <Drawer items={cartItems} onClose={()=>setCartOpened(false)}/>} {/*если cartOpened true, значит Drawer показывается, если не true, то тогда не показывается, либо можно записать так:
+       {cartOpened && <Drawer items={cartItems} onClose={()=>setCartOpened(false)}
+       onRemove={onRemoveItem}/>} {/*если cartOpened true, значит Drawer показывается, если не true, то тогда не показывается, либо можно записать так:
        {cartOpened && <Drawer onClose={()=>setCartOpened(false)}/>}*/}
 
       
       <Header onClickCart={()=>setCartOpened(true)} />
       <div className="content p-40">
         <div className="d-flex align-center mb-40 justify-between">
-          <h1>Все велосипеды</h1>
+          <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все велосипеды'}</h1>
           <div className="search-block d-flex">
             <img width={18} src="./logo/Search.svg" alt="Search" />
-            <input placeholder="Поиск..."/>
+            {searchValue && (
+            <img onClick={()=>setSearchValue('')} className="clear cu-p" src="./logo/btn-remove1.svg" alt="Clear"/>) } {/* либо можно так {searchValue ? <img onClick={()=>setSearchValue('')}чтобы очищалось при нажатии на кнопку className="clear cu-p" src="./logo/btn-remove1.svg" alt="Clear"/> : null} */}
+            <input maxLength={24} onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..." /> {/* при каждом добавлении/удалении символов в поисковой строке выполняется данный метод */}
           </div>
         </div>
         <div className="bikes">
-          {items.map((item)=>(<Card name={item.name} price={item.price} imageURL={item.imageURL} alt={item.alt} onFavorite={()=>console.log('Добавили в закладки')} onPlus={(obj)=>onAddToCart(obj)}/>))}
+          {items.filter(item=>item.name.toLowerCase().includes(searchValue.toLowerCase())).map((item,index)=>(<Card key={index} name={item.name} price={item.price} imageURL={item.imageURL} alt={item.alt} onFavorite={()=>console.log('Добавили в закладки')} onPlus={(obj)=>onAddToCart(obj)}/>))} {/* .filter(item=>item.name.toLowerCase().includes(searchValue)) фильтрует с учетом поискового запроса, toLowerCase() понижение в регистре, чтобы поиск был без учета регистра */}
           {/*<Cad name="GT 27.5 FORCE CRB EXPERT" price={430584} imageURL="./img/gtforcesmall.jpg" alt="GT Force"/>
           <div className="card">
             <div className="favorite">
