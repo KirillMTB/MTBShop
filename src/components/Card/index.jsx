@@ -1,19 +1,40 @@
 import React from "react";
 import styles from "./Card.Module.scss";
 
-export default function Card({onFavorite, imageURL, alt, name, price, onPlus}){
+export default function Card({onFavorite, imageURL, alt, name, price, onPlus, onRemove, id, cartItems, cartFavorite}){
     const [isAdded, setIsAdded] = React.useState(false);
+    const [isFavorite, setIsFavorite] = React.useState(false);
     const onClickPlus=()=>{
         onPlus({imageURL, alt, name, price});
-        setIsAdded(!isAdded)};
+        
+    setIsAdded(!isAdded);};
+
+    {/*const onClickPlus=()=>{
+     const itemInCart = cartItems.find(item=>item.id===id);
+     if (itemInCart) {
+        onRemove(id);
+     } else {
+        onPlus({imageURL, alt, name, price});
+     }  
+        setIsAdded(!isAdded);};
+
+        const onClickFavorite=()=>{
+            const itemInFavorite = cartFavorite.find(item=>item.id===id);
+            if (itemInFavorite) {
+               onRemove(id);
+            } else {
+               onFavorite({imageURL, alt, name, price});
+            }  
+               setIsFavorite(!isFavorite);};*/}
    
-    const [isAddedlike, setIsAddedlike] = React.useState(false);
-    const onClickPlus1=()=>{setIsAddedlike(!isAddedlike)};
+
+        const onClickFavorite=()=>{setIsFavorite(!isFavorite);};
     return(
         <div className={styles.card}>
             <div className="card">
-                <div className="favorite" onClick={onFavorite}>
-                <img onClick={onClickPlus1} src={isAddedlike ? "./logo/heart-like.svg" : "./logo/heart-unlike.svg"} alt="heart-unlike"/>
+                <div className="favorite" onClick={onClickFavorite}>
+                <img src={isFavorite ? "./logo/heart-like.svg" : 
+                "./logo/heart-unlike.svg"} alt="heart-unlike"/>
                 </div>
                 <div className="card-content">
                     <img width={250} src={imageURL} alt={alt}/>
