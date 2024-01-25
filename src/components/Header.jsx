@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-export default function Header(props){
+function Header(props){
     return(
         <header className="d-flex justify-between align-center">
           <Link to={"/"}>
@@ -28,3 +28,4 @@ export default function Header(props){
       </header>
     );
 }
+export default Header;

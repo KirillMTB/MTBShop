@@ -8,8 +8,10 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.5",
     "body-parser": "^1.20.2",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "json-server": "^1.0.0-alpha.22",
     "macro-css": "^1.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -18,28 +20,36 @@
     "sass": "^1.69.5",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start --port 3001",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+ 
+    "scripts": {
+      "start": "react-scripts start",
+      "json-server": "json-server --watch db.json --port 3001",
+      "dev": "concurrently \"npm start\" \"npm run json-server\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    },
+    "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+    "main": "index.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
   }
-}
+  
+  
