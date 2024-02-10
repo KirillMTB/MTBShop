@@ -1,6 +1,34 @@
 {
   "items": [
     {
+      "name": "GT 27.5 FORCE CRB EXPERT",
+      "price": "430584",
+      "imageURL": "./img/gtforcesmall.jpg",
+      "alt": "GT Force",
+      "id": "1"
+    },
+    {
+      "name": "GT 27.5 AVALANCHE COMP",
+      "price": "53460",
+      "imageURL": "./img/gtavalanche.jpg",
+      "alt": "GT Avalanche COMP",
+      "id": "2"
+    },
+    {
+      "name": "CANNONDALE TRAIL SE 2",
+      "price": "155246",
+      "imageURL": "./img/cannondaletrail.jpg",
+      "alt": "CANNONDALE TRAIL SE 2",
+      "id": "3"
+    },
+    {
+      "name": "CANNONDALE TRAIL SE 1",
+      "price": "168620",
+      "imageURL": "./img/cannondaletrailse.jpg",
+      "alt": "CANNONDALE TRAIL SE 1",
+      "id": "4"
+    },
+    {
       "name": "CANNONDALE F-SI CRB 4",
       "price": "323615",
       "imageURL": "./img/cannondalefsi.jpg",
@@ -15,11 +43,11 @@
       "id": "6"
     },
     {
-      "id": "7",
       "name": "Corratec VERT ELITE",
       "imageURL": "./img/corratecvertelite.jpg",
       "alt": "Corratec VERT ELITE",
-      "price": "113630"
+      "price": "113630",
+      "id": "7"
     },
     {
       "name": "Outleap RADIUS PRO 29",

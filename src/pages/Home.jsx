@@ -17,7 +17,7 @@ function Home({
     
     const filtredItems= items.filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase()),
     );
-    return (isLoading ? [...Array(8)] : filtredItems).map((item, index) => (
+    return (isLoading ? [...Array(10)] : filtredItems).map((item, index) => (
               <Card
                 key={index}
                 onFavorite={(obj) => onAddToFavorite(obj)}
@@ -41,7 +41,7 @@ function Home({
             <input maxLength={21} onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..." /> {/* при каждом добавлении/удалении символов в поисковой строке выполняется данный метод */}
           </div>
       
-          <div className="d-flex flex-wrap">
+          <div className="bikes">
           {renderItems()}
       </div></div>
 {/*

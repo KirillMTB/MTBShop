@@ -30,6 +30,7 @@ function Card({
   return (
     <div className={styles.card}>
       <div className="card">
+      
       {
         loading ? <ContentLoader
           speed={2}
@@ -45,10 +46,10 @@ function Card({
           <rect x="0" y="234" rx="5" ry="5" width="80" height="25" />
           <rect x="124" y="230" rx="10" ry="10" width="32" height="32" />
     </ContentLoader> : <>
-    <div className={styles.favorite} onClick={onClickFavorite}>
+    <div className="favorite" onClick={onClickFavorite}>
       <img src={isFavorite ? './logo/heart-like.svg' : './logo/heart-unlike.svg'} alt="Unliked" />
     </div>
-    <img width={133} height={112} src={imageURL} className={"ml-20"} alt={alt} />
+    <img width={200} src={imageURL} className={"ml-20"} alt={alt} />
     <h5>{name}</h5>
     <div className="d-flex justify-between align-center">
       <div className="d-flex flex-column">
@@ -56,16 +57,16 @@ function Card({
         <b>{price} руб.</b>
       </div>
       <img
-        className={styles.plus}
+        className="plus"
         onClick={onClickPlus}
         src={isItemAdded(id) ? './logo/btn-checked.svg' : './logo/btn-plus.svg'}
         alt="Plus"
       />
     </div></>
       }
-
+</div>
     </div>
-    </div>
+    
     );
 }
 export default Card;
