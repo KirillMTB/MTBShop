@@ -2,75 +2,80 @@
   "items": [
     {
       "name": "GT 27.5 FORCE CRB EXPERT",
-      "price": "430584",
+      "price": 430584,
       "imageURL": "./img/gtforcesmall.jpg",
       "alt": "GT Force",
       "id": "1"
     },
     {
       "name": "GT 27.5 AVALANCHE COMP",
-      "price": "53460",
+      "price": 53460,
       "imageURL": "./img/gtavalanche.jpg",
       "alt": "GT Avalanche COMP",
       "id": "2"
     },
     {
       "name": "CANNONDALE TRAIL SE 2",
-      "price": "155246",
+      "price": 155246,
       "imageURL": "./img/cannondaletrail.jpg",
       "alt": "CANNONDALE TRAIL SE 2",
       "id": "3"
     },
     {
       "name": "CANNONDALE TRAIL SE 1",
-      "price": "168620",
+      "price": 168620,
       "imageURL": "./img/cannondaletrailse.jpg",
       "alt": "CANNONDALE TRAIL SE 1",
       "id": "4"
     },
     {
       "name": "CANNONDALE F-SI CRB 4",
-      "price": "323615",
+      "price": 323615,
       "imageURL": "./img/cannondalefsi.jpg",
       "alt": "CANNONDALE F-SI CRB 4",
       "id": "5"
     },
     {
       "name": "CANNONDALE SCALPEL CRB 3",
-      "price": "447595",
+      "price": 447595,
       "imageURL": "./img/cannondalescalpel.jpg",
       "alt": "CANNONDALE SCALPEL CRB 3",
       "id": "6"
     },
     {
       "name": "Corratec VERT ELITE",
+      "price": 113630,
       "imageURL": "./img/corratecvertelite.jpg",
       "alt": "Corratec VERT ELITE",
-      "price": "113630",
       "id": "7"
     },
     {
       "name": "Outleap RADIUS PRO 29",
-      "price": "106700",
+      "price": 106700,
       "imageURL": "./img/outleapradiuspro.jpg",
       "alt": "Outleap RADIUS PRO 29",
       "id": "8"
     },
     {
       "name": "Jamis HARDLINE C2",
-      "price": "640024",
+      "price": 640024,
       "imageURL": "./img/jamishardlinec2.jpg",
       "alt": "Jamis HARDLINE C2",
       "id": "9"
     },
     {
       "name": "Jamis HARDLINE C3",
-      "price": "537660",
+      "price": 537660,
       "imageURL": "./img/jamishardline.jpg",
       "alt": "Jamis HARDLINE C3",
       "id": "10"
     }
   ],
   "cart": [],
-  "favorites": []
+  "favorites": [
+  
+  ],
+  "orders": [
+    
+  ]
 }
