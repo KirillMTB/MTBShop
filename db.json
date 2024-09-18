@@ -73,9 +73,49 @@
   ],
   "cart": [],
   "favorites": [
-  
+    {
+      "id": "2",
+      "name": "GT 27.5 AVALANCHE COMP",
+      "imageURL": "./img/gtavalanche.jpg",
+      "alt": "GT Avalanche COMP",
+      "price": 53460
+    },
+    {
+      "id": "3",
+      "name": "CANNONDALE TRAIL SE 2",
+      "imageURL": "./img/cannondaletrail.jpg",
+      "alt": "CANNONDALE TRAIL SE 2",
+      "price": 155246
+    }
   ],
   "orders": [
-    
+    {
+      "id": "a034",
+      "productIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "d541",
+      "productIds": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "0245",
+      "productIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "4f62",
+      "productIds": [
+        3,
+        2
+      ]
+    }
   ]
 }

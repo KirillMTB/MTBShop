@@ -81,10 +81,7 @@ function App() {
       return cartItems.some((obj)=>Number(obj.id)===Number(id));
     }
   
-    const afterOpenModal=()=> {
-      document.body.style.overflow = 'hidden';
-    }
-  
+
 
   return (
     <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened, setCartItems, onAddToCart}}>
@@ -101,7 +98,7 @@ function App() {
           onAddToFavorite={onAddToFavorite}
           onAddToCart={onAddToCart}
           isLoading={isLoading}
-          afterOpenModal={afterOpenModal}
+          
     
         />} />
         <Route path="/favorites" element={<Favorites/>} />
